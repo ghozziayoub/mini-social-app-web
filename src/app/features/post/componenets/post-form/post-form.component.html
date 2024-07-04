@@ -1,0 +1,29 @@
+<section class="bg-300 position-relative z-0" id="contact">
+  <div class="container py-2">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <h4 class="fw-bold text-center mb-2 lh-sm">Write a post</h4>
+          </div>
+          <div class="col-10 col-lg-7">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <div class="mb-2 w-100">
+                <input
+                type="text"
+                class="form-control email-input"
+                formControlName="content"
+                placeholder="content"
+                id="current-log-content"
+              />
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-lg btn-primary lh-xl mb-x1" type="submit" type="submit" [disabled]="form.invalid || isSubmitting()"> Submit </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

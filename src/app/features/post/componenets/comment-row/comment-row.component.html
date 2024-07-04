@@ -1,0 +1,9 @@
+<div>
+  <p><i>{{ comment().user.fullName }}</i></p> 
+  <p>{{ comment().content }}</p>
+  <span>{{ comment().createdAt | date : "short" }}</span>
+  @if (isOwner(comment().user._id) || isOwner(post().user._id)) {
+  <button class="btn btn-sm btn-primary ms-3" (click)="deleteComment(comment()._id)">Delete</button>
+  }
+</div>
+<hr />

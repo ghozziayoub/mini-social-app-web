@@ -1,0 +1,32 @@
+<section class="bg-300 position-relative z-0" id="contact">
+  <div class="container py-8 py-lg-9">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <h2 class="fs-4 fs-lg-3 fw-bold text-center mb-2 lh-sm">Login</h2>
+          </div>
+          <div class="col-10 col-lg-7">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <div class="mb-2 w-100">
+                <input type="text" class="form-control email-input" formControlName="email" placeholder="Email"
+                  [ngClass]="{'is-invalid': Email.touched && Email.invalid}" />
+              </div>
+              <div class="mb-2 w-100">
+                <input #pwd type="password" class="form-control email-input" formControlName="password"
+                  placeholder="Password" />
+              </div>
+              <div class="d-grid">
+                <button class="btn btn-lg btn-primary lh-xl mb-x1" type="submit" type="submit" [disabled]="form.invalid || isSubmitting()"> Submit </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-10 col-lg-7">
+            <p class="text-center lh-lg mb-0">We’ll never share your details with third parties.</p>
+            <p class="text-center lh-lg mb-0">Don't have an account ? <a [routerLink]="['/auth/signup']">signup</a> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

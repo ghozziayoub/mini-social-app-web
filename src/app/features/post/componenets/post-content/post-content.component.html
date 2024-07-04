@@ -1,0 +1,35 @@
+<section class="bg-1100 mt-n1 pt-3">
+  <div class="mx-auto text-center">
+    <hr class="horizontal-rule m-0 d-inline-block" />
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 mb-4 mb-lg-6">
+        <div class="row g-2">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <p>{{ post().content }}</p>
+                <p><i>{{ post().user.fullName }} {{ post().createdAt | date : "short" }}</i></p>
+              </div>
+              <div class="card-footer">
+                <span>{{ post().likes.length }} likes</span>
+                <div class="mt-3">
+                  <button class="btn btn-sm btn-info me-3" (click)="onToggleLike()">
+                    {{ post().likes.includes(currentUser()?.id ?? "") ? "Dislike" : "Like" }}
+                  </button>
+                  @if (showViewComments()) {
+                  <button class="btn btn-sm btn-secondary me-3" (click)="goToPost(post()._id)">show Comments</button>
+                  } @if (isOwner(post().user._id)) {
+                  <button class="btn btn-sm btn-primary" (click)="deletePost(post()._id)">Delete Post</button>
+                  }
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

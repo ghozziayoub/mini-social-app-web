@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md" id="navbar" data-navbar-soft-on-scroll="data-navbar-soft-on-scroll">
+  <div class="container-fluid px-0">
+    <a class=" fw-bold d-none d-md-block">MINI SOCIAL MEDIA</a>
+    <a class="btn btn-primary btn-sm ms-md-x1 mt-lg-0 order-md-1 ms-auto" (click)="goBack()">Go Back</a>
+  </div>
+</nav>
+@if(isLoading()){
+<p>Loading ...</p>
+}@else{
+<div>
+  <br />
+  @if (post && currentUser) {
+  <app-post-content
+    [post]="post"
+    [currentUser]="currentUser"
+    (onDelete)="goBack()"
+  />
+  <div class="container">
+    <h3>Comments</h3>
+    @for(comment of post.comments; track comment._id){
+    <app-comment-row
+      [comment]="comment"
+      [post]="post"
+      [currentUser]="currentUser"
+      (onDelete)="onDelete($event)"
+    />
+    <hr />
+    }
+    <app-comment-form
+      [post]="post"
+      [currentUser]="currentUser"
+      (onSubmit)="loadPost()"
+    />
+  </div>
+  }
+</div>
+}

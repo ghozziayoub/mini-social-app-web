@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-md" id="navbar" data-navbar-soft-on-scroll="data-navbar-soft-on-scroll">
+  <div class="container-fluid px-0">
+    <a class=" fw-bold d-none d-md-block">MINI SOCIAL MEDIA</a>
+    <a class="btn btn-primary btn-sm ms-md-x1 mt-lg-0 order-md-1 ms-auto" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<app-post-form (onSubmit)="loadPosts()" />
+
+<hr />
+
+@if(isLoading()){
+<div class="">Loading ...</div>
+}@else{ @for (post of posts; track post._id) {
+<app-post-content
+  [post]="post"
+  [currentUser]="currentUser"
+  [showViewComments]="true"
+  (onDelete)="onDelete($event)"
+/>
+} }
